@@ -21,7 +21,7 @@ local function warn_by_username(extra, success, result) -- /warn <@username>
   if value then
    if value == '1' then
     redis:hset(hash, msg.id, '2')
-   text = '[ '..name..' ]\n شما به دلیل رعایت نکردن قوانین اخطار دریافت میکنید\nتعداد اخطار های شما : ۲/۴'
+   text = '<code>[ '..name..' ]\n شما به دلیل رعایت نکردن قوانین اخطار دریافت میکنید\nتعداد اخطار های شما : ۲/۴</code>'
    elseif value == '2' then
   redis:hset(hash, msg.id, '3')
   text = '[ '..name..' ]\n شما به دلیل رعایت نکردن قوانین اخطار دریافت میکنید\nتعداد اخطار های شما : ۳/۴'

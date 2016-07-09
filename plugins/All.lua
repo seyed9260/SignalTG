@@ -33,7 +33,7 @@ local function get_group_type(target)
   local data = load_data(_config.moderation.data)
   local group_type = data[tostring(target)]['group_type']
     if not group_type or group_type == nil then
-       return 'No group type available.\nUse /type in the group to set type.'
+       return 'هیچ نوع گروهی پیدا نشد !.\nUse /type in the group to set type.'
     end
     return group_type
 end
@@ -42,7 +42,7 @@ local function get_description(target)
   local data = load_data(_config.moderation.data)
   local data_cat = 'description'
   if not data[tostring(target)][data_cat] then
-    return 'No description available.'
+    return 'هیچ مشخصاتی پیدا نشد.'
   end
   local about = data[tostring(target)][data_cat]
   return about
@@ -52,7 +52,7 @@ local function get_rules(target)
   local data = load_data(_config.moderation.data)
   local data_cat = 'rules'
   if not data[tostring(target)][data_cat] then
-    return 'No rules available.'
+    return 'هیچ قانونی پیدا نشد.'
   end
   local rules = data[tostring(target)][data_cat]
   return rules
@@ -63,13 +63,13 @@ local function modlist(target)
   local data = load_data(_config.moderation.data)
   local groups = 'groups'
   if not data[tostring(groups)] or not data[tostring(groups)][tostring(target)] then
-    return 'Group is not added or is Realm.'
+    return 'گروه اضافه نشده است یا ریلم هست.'
   end
   if next(data[tostring(target)]['moderators']) == nil then
-    return 'No moderator in this group.'
+    return 'هیچ مدیری در این گروه نیست.'
   end
   local i = 1
-  local message = '\nList of moderators :\n'
+  local message = '\nلیست مدیر ها :\n'
   for k,v in pairs(data[tostring(target)]['moderators']) do
     message = message ..i..' - @'..v..' [' ..k.. '] \n'
     i = i + 1
@@ -81,9 +81,9 @@ local function get_link(target)
   local data = load_data(_config.moderation.data)
   local group_link = data[tostring(target)]['settings']['set_link']
   if not group_link or group_link == nil then 
-    return "No link"
+    return "هیچ لینکی موجود نیست"
   end
-  return "Group link:\n"..group_link
+  return "لینک گروه :\n"..group_link
 end
 
 local function all(msg,target,receiver)
@@ -91,24 +91,24 @@ local function all(msg,target,receiver)
   if not data[tostring(target)] then
     return
   end
-  local text = "All the things I know about this group\n\n"
+  local text = "اینها همه چیز هایی هستند که من درباره این گروه میدانم\n\n"
   local group_type = get_group_type(target)
-  text = text.."Group Type: \n"..group_type
-  if group_type == "Group" or group_type == "Realm" then
+  text = text.."نوع گروه: \n"..group_type
+  if group_type == "گروه" or group_type == "ریلم" then
 	local settings = show_group_settingsmod(msg,target)
 	text = text.."\n\n"..settings
-  elseif group_type == "SuperGroup" then
+  elseif group_type == "سوپرگروه" then
 	local settings = show_supergroup_settingsmod(msg,target)
 	text = text..'\n\n'..settings
   end
   local rules = get_rules(target)
-  text = text.."\n\nRules: \n"..rules
+  text = text.."\n\nقوانین: \n"..rules
   local description = get_description(target)
-  text = text.."\n\nAbout: \n"..description
+  text = text.."\n\nدرباره: \n"..description
   local modlist = modlist(target)
-  text = text.."\n\nMods: \n"..modlist
+  text = text.."\n\nمدیر ها: \n"..modlist
   local link = get_link(target)
-  text = text.."\n\nLink: \n"..link
+  text = text.."\n\nلینک: \n"..link
   local stats = chat_stats(target)
   text = text.."\n\n"..stats
   local mutes_list = mutes_list(target)
