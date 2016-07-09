@@ -9,6 +9,8 @@ chmod +x launchfix2.sh
 chmod +x launch.sh
 chmod +x autolaunch.sh
 chmod +x steady.sh
+chmod +x sudo.sh
+chmod +x launchs.sh
 ./launch.sh install
 cd .luarocks
 cd bin
