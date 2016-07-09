@@ -1,9 +1,7 @@
 ```sh
-# Install dependencies.
-# Tested on Ubuntu 14.04. For other OSs, check out https://github.com/yagop/telegram-bot/wiki/Installation
-sudo apt-get install libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-dev libevent-dev make unzip git redis-server g++ libjansson-dev libpython-dev expat libexpat1-dev
 
-# Let's install the bot.
+# دستورات زیر را در ترمینال وارد کنید
+sudo apt-get install libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-dev libevent-dev make unzip git redis-server g++ libjansson-dev libpython-dev expat libexpat1-dev
 cd $HOME
 git clone https://github.com/SIGNALTEAM/SignalTG.git
 cd SignalTG
@@ -23,19 +21,21 @@ cd SignalTG
 ./launch.sh # Enter a phone number & confirmation code.
 ```
 
-**دقـــــــــــيق مثل همین عمل کنید**
+**دستورات بالا را دقیق وارد کنید**
 
 ```
-# Auto Launch Bot With :
+# آموزش اتولانچ :
 
 killall screen
 killall tmux
 killall telegram-cli
-tmux new-session -s script "bash steady.sh -t"
+tmux new-session -s script "bash sudo.sh -t"
 ```
 
-# Auto Launch Confiure :
+# آموزش Launchs.sh :
 
-**go to steady.sh and config it !**
+**خوب Launchs.sh ابزار کاربردی مدیریت ربات هست مثلا میتونید باهاش بکاپ بگیرید و ...**
 
-***Then Go To line 9 - 10 and change bot folder name and reload time!***
+***برای لانچ کردنش هم دستور ./launchs.sh را در ترمینال وارد کنید***
+
+** با تشکر **
